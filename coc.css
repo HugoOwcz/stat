@@ -1,0 +1,54 @@
+form {
+    border: black solid 2px;
+    padding: 5px;
+    width: 30%;
+}
+
+section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    border-radius: 10px;
+}
+
+div {
+    margin: 10px;
+}
+
+table {
+    border: black solid 6px;
+    border-collapse: collapse;
+}
+
+th {
+    border: black solid 4px;
+    padding: 6px;
+    background-color: gray;
+    font-size: 140%;
+    color: white;
+}
+
+td {
+    background-color: white;
+    border: black solid 2px;
+    padding: 6px;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+}
+
+caption {
+    font-size: 200%;
+    font-weight: bolder;
+    margin: 1%;
+}
+
+h1 {
+    font-size: 300%;
+    text-align: center;
+}

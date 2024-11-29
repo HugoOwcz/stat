@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $created = htmlspecialchars($_POST["created"]);
     $maxedHdv = htmlspecialchars($_POST["maxedHdv"]);
     $maxedMdo = htmlspecialchars($_POST["maxedMdo"]);
-    if ($name != '' and $hdvMax != '' and $mdoMax != '' and $email != '') {
+    if ($name != '' and $hdvMax != '' and $mdoMax != '') {
         try {
             $pdo = new PDO('mysql:host=localhost;dbname=stat_perso', 'root', '');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,4 +22,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-header("location: ".$_SESSION['location']);
+header("location:coc.php");
