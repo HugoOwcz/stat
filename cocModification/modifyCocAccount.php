@@ -9,7 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $value = htmlspecialchars($_POST["otherValue"]);
         }
         try {
-            $pdo = new PDO('mysql:host=localhost;dbname=stat_perso', 'root', '');
+            $pdo = null;
+            include 'pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             switch ($key) {
                 case "name":
@@ -55,4 +56,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
     }
 }
-header("location:coc.php");
+header("location:../coc.php");

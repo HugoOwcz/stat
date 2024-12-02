@@ -1,15 +1,18 @@
+<?php
+$hdv = explode('?', $_SERVER['REQUEST_URI'])[1]
+?>
 <!DOCTYPE>
 <html lang="en">
 <head>
     <?php include 'head.php' ?>
-    <title>Anime</title>
+    <title>Mdo <?php echo $hdv?></title>
 </head>
 <body>
 <?php
 include './header.php';
 ?>
 <main>
-    <h1>Anime</h1>
+    <h1>Mdo <?php echo $hdv?></h1>
 </main>
 <footer>
     <?php include 'toTop.php' ?>

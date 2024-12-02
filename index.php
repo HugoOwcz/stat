@@ -1,10 +1,9 @@
 <!DOCTYPE>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <?php include 'head.php' ?>
     <title>Home</title>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <?php
@@ -27,5 +26,8 @@ include 'header.php';
         </a>
     </section>
 </main>
+<footer>
+    <?php include 'toTop.php' ?>
+</footer>
 </body>
 </html>

@@ -4,7 +4,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST["name"]);
     if ($name != "default") {
         try {
-            $pdo = new PDO('mysql:host=localhost;dbname=stat_perso', 'root', '');
+            $pdo = null;
+            include 'pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $delete = $pdo->prepare("DELETE FROM coc WHERE pseudoAccount = :name");
             $delete->bindParam(':name', $name);
@@ -15,4 +16,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
     }
 }
-header("location:coc.php");
+header("location:../coc.php");

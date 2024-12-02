@@ -12,12 +12,13 @@ function color($actualValue, $maxValue=null)
 
 $accountList = array();
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=stat_perso', 'root', '');
+    $pdo = null;
+    include 'cocModification/pdo.php';
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $select = $pdo->prepare("SELECT * FROM coc");
     $select->execute();
-    foreach ($select->fetchAll() as $film) {
-        $accountList[] = $film;
+    foreach ($select->fetchAll() as $account) {
+        $accountList[] = $account;
     }
 } catch (PDOException $e) {
     echo $e->getMessage();
@@ -27,25 +28,24 @@ $pdo = null;
 <!DOCTYPE>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <?php include 'head.php' ?>
     <title>Clash Of Clans</title>
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="coc.css">
+    <link rel="stylesheet" href="css/coc.css">
 </head>
 <body>
 <?php
 include './header.php';
 ?>
 <main>
-    <h1>Clash Of Clans Account</h1>
+    <h1>Clash Of Clans Accounts</h1>
     <section>
         <table>
             <caption>
-                Table of all Clash Of Clans account.
+                Table of Clash Of Clans accounts.
             </caption>
             <thead>
             <tr>
-                <th scope="col">Pseudo</th>
+                <th scope="col">Nickname</th>
                 <th scope="col">Hdv Max</th>
                 <th scope="col">Actual Hdv</th>
                 <th scope="col">Mdo max</th>
@@ -83,10 +83,10 @@ include './header.php';
                         $accountMaxMdo++;
                     }
                     ?> <tr> <td> <?php echo $account['pseudoAccount'] ?> </td> <?php
-                    ?> <td> <?php echo $account['hdvMax'] ?> </td> <?php
-                    ?> <td style="background-color: <?php echo color($account['actualHdv'], $account['hdvMax']) ?>"> <?php echo $account['actualHdv'] ?> </td> <?php
-                    ?> <td> <?php echo $account['mdoMax'] ?> </td> <?php
-                    ?> <td style="background-color: <?php echo color($account['actualMdo'], $account['mdoMax']) ?>"> <?php echo $account['actualMdo'] ?> </td> <?php
+                    ?> <td><a href="infoHdv.php?<?php echo $account['hdvMax'] ?>"> <?php echo $account['hdvMax'] ?> </a></td> <?php
+                    ?> <td style="background-color: <?php echo color($account['actualHdv'], $account['hdvMax']) ?>"><a href="infoHdv.php?<?php echo $account['actualHdv'] ?>"> <?php echo $account['actualHdv'] ?> </a> </td> <?php
+                    ?> <td><a href="infoMdo.php"> <?php echo $account['mdoMax'] ?> </a></td> <?php
+                    ?> <td style="background-color: <?php echo color($account['actualMdo'], $account['mdoMax']) ?>"><a href="infoMdo.php"> <?php echo $account['actualMdo'] ?> </a> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['created'])?>"> <?php echo $account['created'] ?> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['maxedHdv'])?>"> <?php echo $account['maxedHdv'] ?> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['maxedMdo'])?>"> <?php echo $account['maxedMdo'] ?> </td> <?php
@@ -103,32 +103,30 @@ include './header.php';
         </table>
     </section>
 
-
     <section>
-        <h2>Some stat</h2>
-        <p>Account created : <progress value="<?php echo $accountCreated ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountCreated ?> / <?php echo $totalAccount ?></p>
-        <p>Account full max : <progress value="<?php echo $accountFullMax ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountFullMax ?> / <?php echo $totalAccount ?> </p>
-        <p>Account with maxed hdv : <progress value="<?php echo $accountMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxHdv ?> / <?php echo $totalAccount ?> </p>
-        <p>Account at max hdv : <progress value="<?php echo $accountAtMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxHdv ?> / <?php echo $totalAccount ?> </p>
-        <p>Account with maxed mdo : <progress value="<?php echo $accountMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxMdo ?> / <?php echo $totalAccount ?> </p>
-        <p>Account at max mdo : <progress value="<?php echo $accountAtMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxMdo ?> / <?php echo $totalAccount ?> </p>
+        <h2>Some stats</h2>
+        <p>Accounts created : <progress value="<?php echo $accountCreated ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountCreated ?> / <?php echo $totalAccount ?></p>
+        <p>Accounts full max : <progress value="<?php echo $accountFullMax ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountFullMax ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts with maxed hdv : <progress value="<?php echo $accountMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxHdv ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts at max hdv : <progress value="<?php echo $accountAtMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxHdv ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts with maxed mdo : <progress value="<?php echo $accountMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxMdo ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts at max mdo : <progress value="<?php echo $accountAtMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxMdo ?> / <?php echo $totalAccount ?> </p>
     </section>
 
-
     <section>
-        <h2>Add data of account</h2>
-        <form method="post" action="addCocAccount.php">
+        <h2>Add an account</h2>
+        <form method="post" action="cocModification/addCocAccount.php">
             <div>
             <label for="">Name of the account : </label>
             <input type="text" name="name" required>
             </div><div>
-            <label for="">Hdv max for the account : </label>
+            <label for="">Max Hdv for the account : </label>
             <input type="text" name="hdvMax" required>
             </div><div>
             <label for="">Actual Hdv of the account : </label>
             <input type="text" name="actualHdv">
             </div><div>
-            <label for="">Mdo max for the account : </label>
+            <label for="">Max Mdo for the account : </label>
             <input type="text" name="mdoMax" required>
             </div><div>
             <label for="">Actual mdo of the account : </label>
@@ -137,7 +135,7 @@ include './header.php';
             <label for="">Email of the account : </label>
             <input type="text" name="email">
             </div><div>
-            <label for="">Account create : </label>
+            <label for="">Account created : </label>
             <select name="created">
                 <option value="no" selected="selected">No</option>
                 <option value="yes">Yes</option>
@@ -155,15 +153,14 @@ include './header.php';
                 <option value="yes">Yes</option>
             </select>
             </div><div>
-            <input type="submit" value="Add">
+            <input type="submit" value="Add the account">
             </div>
         </form>
     </section>
 
-
     <section>
-        <h2>Modify data of account</h2>
-        <form method="post" action="modifyCocAccount.php">
+        <h2>Modify data of an account</h2>
+        <form method="post" action="cocModification/modifyCocAccount.php">
             <div>
             <label for="">Name of the account you want to modify : </label>
             <select name="name">
@@ -181,10 +178,10 @@ include './header.php';
             <label for="">Value you want to modify : </label>
             <select name="key">
                 <option value="default" selected="selected">Choose a value</option>
-                <option value="name">Account name</option>
-                <option value="hdvMax">Hdv max</option>
+                <option value="name">Account nickname</option>
+                <option value="hdvMax">Max Hdv</option>
                 <option value="actualHdv">Actual Hdv</option>
-                <option value="mdoMax">Mdo max</option>
+                <option value="mdoMax">Max Mdo</option>
                 <option value="actualMdo">Actual Mdo</option>
                 <option value="email">Email</option>
                 <option value="created">Created</option>
@@ -203,15 +200,14 @@ include './header.php';
             <label for="">Other : </label>
             <input type="text" name="otherValue">
             </div><div>
-            <input type="submit" value="Modify">
+            <input type="submit" value="Modify the account">
             </div>
         </form>
     </section>
 
-
     <section>
-        <h2>Delete account</h2>
-        <form method="post" action="deleteCocAccount.php">
+        <h2>Delete an account</h2>
+        <form method="post" action="cocModification/deleteCocAccount.php">
             <div>
             <label for="">Name of the account you want to delete : </label>
             <select name="name">
@@ -226,12 +222,14 @@ include './header.php';
                 ?>
             </select>
             </div><div>
-            <input type="submit" value="Delete">
+            <input type="submit" value="Delete the account">
             </div>
         </form>
     </section>
 
-
 </main>
+<footer>
+    <?php include 'toTop.php' ?>
+</footer>
 </body>
 </html>
