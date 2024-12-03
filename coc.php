@@ -46,13 +46,13 @@ include './header.php';
             <thead>
             <tr>
                 <th scope="col">Nickname</th>
-                <th scope="col">Hdv Max</th>
-                <th scope="col">Actual Hdv</th>
-                <th scope="col">Mdo max</th>
-                <th scope="col">Actual Mdo</th>
+                <th scope="col">Th Max</th>
+                <th scope="col">Actual Th</th>
+                <th scope="col">Bh max</th>
+                <th scope="col">Actual Bh</th>
                 <th scope="col">Created</th>
-                <th scope="col">Maxed Hdv</th>
-                <th scope="col">Maxed Mdo</th>
+                <th scope="col">Maxed Th</th>
+                <th scope="col">Maxed Bh</th>
                 <th scope="col">Full max</th>
                 <th scope="col">Email</th>
             </tr>
@@ -83,10 +83,10 @@ include './header.php';
                         $accountMaxMdo++;
                     }
                     ?> <tr> <td> <?php echo $account['pseudoAccount'] ?> </td> <?php
-                    ?> <td><a href="infoHdv.php?<?php echo $account['hdvMax'] ?>"> <?php echo $account['hdvMax'] ?> </a></td> <?php
-                    ?> <td style="background-color: <?php echo color($account['actualHdv'], $account['hdvMax']) ?>"><a href="infoHdv.php?<?php echo $account['actualHdv'] ?>"> <?php echo $account['actualHdv'] ?> </a> </td> <?php
-                    ?> <td><a href="infoMdo.php"> <?php echo $account['mdoMax'] ?> </a></td> <?php
-                    ?> <td style="background-color: <?php echo color($account['actualMdo'], $account['mdoMax']) ?>"><a href="infoMdo.php"> <?php echo $account['actualMdo'] ?> </a> </td> <?php
+                    ?> <td><a href="infoHdvMdo.php?Hdv-<?php echo $account['hdvMax'] ?>"> <?php echo $account['hdvMax'] ?> </a></td> <?php
+                    ?> <td style="background-color: <?php echo color($account['actualHdv'], $account['hdvMax']) ?>"><a href="infoHdvMdo.php?Hdv-<?php echo $account['actualHdv'] ?>"> <?php echo $account['actualHdv'] ?> </a> </td> <?php
+                    ?> <td><a href="infoHdvMdo.php?Mdo-<?php echo $account['mdoMax'] ?>"> <?php echo $account['mdoMax'] ?> </a></td> <?php
+                    ?> <td style="background-color: <?php echo color($account['actualMdo'], $account['mdoMax']) ?>"><a href="infoHdvMdo.php?Mdo-<?php echo $account['actualMdo'] ?>"> <?php echo $account['actualMdo'] ?> </a> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['created'])?>"> <?php echo $account['created'] ?> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['maxedHdv'])?>"> <?php echo $account['maxedHdv'] ?> </td> <?php
                     ?> <td style="background-color: <?php echo color($account['maxedMdo'])?>"> <?php echo $account['maxedMdo'] ?> </td> <?php
@@ -120,16 +120,16 @@ include './header.php';
             <label for="">Name of the account : </label>
             <input type="text" name="name" required>
             </div><div>
-            <label for="">Max Hdv for the account : </label>
+            <label for="">Max Th for the account : </label>
             <input type="text" name="hdvMax" required>
             </div><div>
-            <label for="">Actual Hdv of the account : </label>
+            <label for="">Actual Th of the account : </label>
             <input type="text" name="actualHdv">
             </div><div>
-            <label for="">Max Mdo for the account : </label>
+            <label for="">Max Bh for the account : </label>
             <input type="text" name="mdoMax" required>
             </div><div>
-            <label for="">Actual mdo of the account : </label>
+            <label for="">Actual Bh of the account : </label>
             <input type="text" name="actualMdo">
             </div><div>
             <label for="">Email of the account : </label>
@@ -141,13 +141,13 @@ include './header.php';
                 <option value="yes">Yes</option>
             </select>
             </div><div>
-            <label for="">Hdv maxed : </label>
+            <label for="">Th maxed : </label>
             <select name="maxedHdv">
                 <option value="no" selected="selected">No</option>
                 <option value="yes">Yes</option>
             </select>
             </div><div>
-            <label for="">Mdo maxed : </label>
+            <label for="">Bh maxed : </label>
             <select name="maxedMdo">
                 <option value="no" selected="selected">No</option>
                 <option value="yes">Yes</option>
@@ -179,14 +179,14 @@ include './header.php';
             <select name="key">
                 <option value="default" selected="selected">Choose a value</option>
                 <option value="name">Account nickname</option>
-                <option value="hdvMax">Max Hdv</option>
-                <option value="actualHdv">Actual Hdv</option>
-                <option value="mdoMax">Max Mdo</option>
-                <option value="actualMdo">Actual Mdo</option>
+                <option value="hdvMax">Max Th</option>
+                <option value="actualHdv">Actual Th</option>
+                <option value="mdoMax">Max Bh</option>
+                <option value="actualMdo">Actual Bh</option>
                 <option value="email">Email</option>
                 <option value="created">Created</option>
-                <option value="maxedHdv">Maxed Hdv</option>
-                <option value="maxedMdo">Maxed Mdo</option>
+                <option value="maxedHdv">Maxed Th</option>
+                <option value="maxedMdo">Maxed Bh</option>
             </select>
             </div><div>
             <label for="">New value : </label>
