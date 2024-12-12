@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php include 'head.php' ?>
-    <title>Titre</title>
+    <title>Film</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
 include './header.php';
 ?>
 <main>
-    <h1>Titre</h1>
+    <h1>Film</h1>
 </main>
 <footer>
     <?php include 'toTop.php' ?>

@@ -30,7 +30,8 @@ $pdo = null;
 <head>
     <?php include 'head.php' ?>
     <title>Clash Of Clans</title>
-    <link rel="stylesheet" href="css/coc.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/cocLogo.webp">
 </head>
 <body>
 <?php

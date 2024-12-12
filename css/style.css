@@ -5,7 +5,6 @@ form {
 }
 
 section {
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,6 +53,31 @@ h1 {
 }
 
 a {
-    color: black;
     text-decoration: underline;
+}
+
+.categories {
+    flex-wrap: wrap;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+
+.category {
+    border: 4px lightgray solid;
+    background-color: #364652;
+    text-align: center;
+    border-radius: 10px;
+    color: #EFE1C4;
+    width: 400px;
+    height: 300px;
+}
+
+.choice {
+    text-decoration: none;
+    margin: 4%;
+}
+
+.category:hover {
+    border: 5px solid black;
 }
