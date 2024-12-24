@@ -4,10 +4,10 @@ session_start();
 <header>
     <nav class="navBar">
         <?php
-        $location = explode('/', $_SERVER['REQUEST_URI'])[2];
-        if ($location != 'index.php' && $location != '') {
+        $location = explode('/', $_SERVER['REQUEST_URI'])[3];
+        if ($location != 'home.php' && $location != '') {
         ?>
-        <a href="index.php" class="navButton">
+        <a href="home.php" class="navButton">
             <p> Home </p>
         </a>
         <?php
@@ -41,7 +41,7 @@ session_start();
             <?php
         }
         if ($location == '') {
-            $_SESSION['location'] = 'index.php';
+            $_SESSION['location'] = 'home.php';
         } else {
             $_SESSION['location'] = $location;
         } ?>

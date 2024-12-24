@@ -13,7 +13,7 @@ function color($actualValue, $maxValue=null)
 $accountList = array();
 try {
     $pdo = null;
-    include 'cocModification/pdo.php';
+    include '../cocModification/pdo.php';
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $select = $pdo->prepare("SELECT * FROM coc");
     $select->execute();
@@ -28,14 +28,14 @@ $pdo = null;
 <!DOCTYPE>
 <html lang="en">
 <head>
-    <?php include 'head.php' ?>
+    <?php include '../importPhp/head.php' ?>
     <title>Clash Of Clans</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/cocLogo.webp">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" href="../img/cocLogo.webp">
 </head>
 <body>
 <?php
-include './header.php';
+include '../importPhp/header.php';
 ?>
 <main>
     <h1>Clash Of Clans Accounts</h1>
@@ -116,7 +116,7 @@ include './header.php';
 
     <section>
         <h2>Add an account</h2>
-        <form method="post" action="cocModification/addCocAccount.php">
+        <form method="post" action="../cocModification/addCocAccount.php">
             <div>
             <label for="">Name of the account : </label>
             <input type="text" name="name" required>
@@ -161,7 +161,7 @@ include './header.php';
 
     <section>
         <h2>Modify data of an account</h2>
-        <form method="post" action="cocModification/modifyCocAccount.php">
+        <form method="post" action="../cocModification/modifyCocAccount.php">
             <div>
             <label for="">Name of the account you want to modify : </label>
             <select name="name">
@@ -208,7 +208,7 @@ include './header.php';
 
     <section>
         <h2>Delete an account</h2>
-        <form method="post" action="cocModification/deleteCocAccount.php">
+        <form method="post" action="../cocModification/deleteCocAccount.php">
             <div>
             <label for="">Name of the account you want to delete : </label>
             <select name="name">
@@ -230,7 +230,7 @@ include './header.php';
 
 </main>
 <footer>
-    <?php include 'toTop.php' ?>
+    <?php include '../importPhp/toTop.php' ?>
 </footer>
 </body>
 </html>

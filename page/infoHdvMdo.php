@@ -6,7 +6,7 @@ $infoBuildingList = array();
 $intoTroopList = array();
 try {
     $pdo = null;
-    include 'cocModification/pdo.php';
+    include '../cocModification/pdo.php';
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $select = $pdo->prepare("SELECT * FROM buildingsinfoforhdvmdo WHERE HdvOrMdo = :hdvormdo AND levelHdvMdo = :level");
     $select->execute(['hdvormdo' => $hdvOrmdo, 'level' => $level]);
@@ -26,13 +26,13 @@ $pdo = null;
 <!DOCTYPE>
 <html lang="en">
 <head>
-    <?php include 'head.php' ?>
+    <?php include '../importPhp/head.php' ?>
     <title><?php echo $hdvOrmdo;?> <?php echo $level ?></title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <?php
-include './header.php';
+include '../importPhp/header.php';
 ?>
 <main>
     <h1><?php echo $hdvOrmdo;?> <?php echo $level ?></h1>
@@ -86,7 +86,7 @@ include './header.php';
 
     <section>
         <h2>Add building for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="cocModification/addInfoHdv.php">
+        <form method="post" action="../cocModification/addInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>
@@ -111,7 +111,7 @@ include './header.php';
 
     <section>
         <h2>Delete building for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="cocModification/deleteInfoHdv.php">
+        <form method="post" action="../cocModification/deleteInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>
@@ -134,7 +134,7 @@ include './header.php';
 
     <section>
         <h2>Add troop for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="cocModification/addInfoHdv.php">
+        <form method="post" action="../cocModification/addInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>
@@ -155,7 +155,7 @@ include './header.php';
 
     <section>
         <h2>Delete troop for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="cocModification/deleteInfoHdv.php">
+        <form method="post" action="../cocModification/deleteInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>
@@ -178,7 +178,7 @@ include './header.php';
 
 </main>
 <footer>
-    <?php include 'toTop.php' ?>
+    <?php include '../importPhp/toTop.php' ?>
 </footer>
 </body>
 </html>
