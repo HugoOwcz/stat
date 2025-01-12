@@ -7,13 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pdo = null;
             include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $delete = $pdo->prepare("DELETE FROM coc WHERE pseudoAccount = :name");
-            $delete->bindParam(':name', $name);
-            $delete->execute();
+            $delete = $pdo->prepare("DELETE FROM watchlistAnime WHERE name = :name");
+            $delete->execute(['name' => $name]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
         $pdo = null;
     }
 }
-header("location:../page/coc.php");
+header("location:../page/anime.php?");

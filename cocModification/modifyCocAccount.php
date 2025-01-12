@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         try {
             $pdo = null;
-            include 'pdo.php';
+            include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             switch ($key) {
                 case "name":
@@ -56,4 +56,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
     }
 }
-header("location:../coc.php");
+header("location:../page/coc.php");

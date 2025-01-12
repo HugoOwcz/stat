@@ -3,7 +3,6 @@
 <head>
     <?php include '../importPhp/head.php' ?>
     <title>Film</title>
-    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <?php

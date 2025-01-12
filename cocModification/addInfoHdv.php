@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($hdvOrMdo != " " && $level != " " && $copies != '' && $buildingName != '' && $type != '') {
         try {
             $pdo = null;
-            include 'pdo.php';
+            include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $add = $pdo->prepare("INSERT INTO buildingsinfoforhdvmdo (HdvOrMdo, levelHdvMdo, buildings, maxLevel, nbBuildings, type) VALUES (:HdvOrMdo, :levelHdvMdo, :buildings, :maxLevel , :nbBuildings, :type)");
             $add->execute(['HdvOrMdo' => $hdvOrMdo, 'levelHdvMdo' => $level, 'buildings' => $buildingName, 'maxLevel' => $maxLevel , 'nbBuildings' => $copies, 'type' => $type]);
@@ -21,4 +21,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-header("location:../infoHdvMdo.php?".$hdvOrMdo."-".$level);
+header("location:../page/infoHdvMdo.php?".$hdvOrMdo."-".$level);

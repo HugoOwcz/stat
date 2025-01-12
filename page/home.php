@@ -3,7 +3,6 @@
 <head>
     <?php include '../importPhp/head.php' ?>
     <title>Home</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../img/stat.webp">
 </head>
 <body>

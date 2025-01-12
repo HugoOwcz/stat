@@ -1,12 +1,20 @@
 <?php
+function hdvOrMdoEnValue ($hdvormdo) {
+    if ($hdvormdo == 'Hdv') {
+        return 'Th';
+    }
+    return 'Bh';
+}
+
 $tmp = explode('?', $_SERVER['REQUEST_URI'])[1];
 $hdvOrmdo = explode('-', $tmp)[0];
+$hdvOrmdotext = hdvOrMdoEnValue($hdvOrmdo);
 $level = explode('-', $tmp)[1];
 $infoBuildingList = array();
 $intoTroopList = array();
 try {
     $pdo = null;
-    include '../cocModification/pdo.php';
+    include '../importPhp/pdo.php';
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $select = $pdo->prepare("SELECT * FROM buildingsinfoforhdvmdo WHERE HdvOrMdo = :hdvormdo AND levelHdvMdo = :level");
     $select->execute(['hdvormdo' => $hdvOrmdo, 'level' => $level]);
@@ -27,18 +35,17 @@ $pdo = null;
 <html lang="en">
 <head>
     <?php include '../importPhp/head.php' ?>
-    <title><?php echo $hdvOrmdo;?> <?php echo $level ?></title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title><?php echo $hdvOrmdotext;?> <?php echo $level ?></title>
 </head>
 <body>
 <?php
 include '../importPhp/header.php';
 ?>
 <main>
-    <h1><?php echo $hdvOrmdo;?> <?php echo $level ?></h1>
+    <h1><?php echo $hdvOrmdotext;?> <?php echo $level ?></h1>
     <section>
         <table>
-            <caption>Info for the buildings of this <?php echo $hdvOrmdo;?></caption>
+            <caption>Info for the buildings of this <?php echo $hdvOrmdotext;?></caption>
             <thead>
             <tr>
                 <th scope="col">Name of the building</th>
@@ -63,7 +70,7 @@ include '../importPhp/header.php';
 
     <section>
         <table>
-            <caption>Info for the troop of this <?php echo $hdvOrmdo;?></caption>
+            <caption>Info for the troop of this <?php echo $hdvOrmdotext;?></caption>
             <thead>
             <tr>
                 <th scope="col">Name of the troop</th>
@@ -85,7 +92,7 @@ include '../importPhp/header.php';
     </section>
 
     <section>
-        <h2>Add building for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
+        <h2>Add building for <?php echo $hdvOrmdotext;?> <?php echo $level ?></h2>
         <form method="post" action="../cocModification/addInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
@@ -110,7 +117,7 @@ include '../importPhp/header.php';
     </section>
 
     <section>
-        <h2>Delete building for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
+        <h2>Delete building for <?php echo $hdvOrmdotext;?> <?php echo $level ?></h2>
         <form method="post" action="../cocModification/deleteInfoHdv.php">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
@@ -133,8 +140,9 @@ include '../importPhp/header.php';
     </section>
 
     <section>
-        <h2>Add troop for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="../cocModification/addInfoHdv.php">
+        <h2>Add troop for <?php echo $hdvOrmdotext;?> <?php echo $level ?></h2>
+        <h3>No sql script</h3>
+        <form method="post" action="../cocModification/">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>
@@ -154,8 +162,9 @@ include '../importPhp/header.php';
     </section>
 
     <section>
-        <h2>Delete troop for <?php echo $hdvOrmdo;?> <?php echo $level ?></h2>
-        <form method="post" action="../cocModification/deleteInfoHdv.php">
+        <h2>Delete troop for <?php echo $hdvOrmdotext;?> <?php echo $level ?></h2>
+        <h3>No sql script</h3>
+        <form method="post" action="../cocModification/">
             <input type="hidden" name="hdvOrMdo" value="<?php echo $hdvOrmdo?>">
             <input type="hidden" name="level" value="<?php echo $level?>">
             <div>

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($hdvOrMdo != " " && $level != " " && $name != "default") {
         try {
             $pdo = null;
-            include 'pdo.php';
+            include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $delete = $pdo->prepare("DELETE FROM buildingsinfoforhdvmdo WHERE HdvOrMdo = :hdvorMdo AND levelHdvMdo = :levelHdvMdo AND buildings = :name");
             $delete->execute(['hdvorMdo' => $hdvOrMdo, 'levelHdvMdo' => $level, 'name' => $name]);
@@ -19,4 +19,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
     }
 }
-header("location:../infoHdvMdo.php?".$hdvOrMdo."-".$level);
+header("location:../page/infoHdvMdo.php?".$hdvOrMdo."-".$level);

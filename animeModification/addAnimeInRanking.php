@@ -2,18 +2,18 @@
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST["name"]);
-    if ($name != "default") {
+    $rank = htmlspecialchars($_POST["rank"]);
+    if ($name != '' && $rank != 'default') {
         try {
             $pdo = null;
             include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $delete = $pdo->prepare("DELETE FROM coc WHERE pseudoAccount = :name");
-            $delete->bindParam(':name', $name);
-            $delete->execute();
+            $add = $pdo->prepare("INSERT INTO animeRanking (name, ranking) 
+                VALUES (:name, :rank)");
+            $add->execute(['name' => $name, 'rank' => $rank]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        $pdo = null;
     }
 }
-header("location:../page/coc.php");
+header("location:../page/anime.php");

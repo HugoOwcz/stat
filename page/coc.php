@@ -1,5 +1,4 @@
 <?php
-
 function color($actualValue, $maxValue=null)
 {
     if ($actualValue == 0 or $actualValue == 'no') {
@@ -13,7 +12,7 @@ function color($actualValue, $maxValue=null)
 $accountList = array();
 try {
     $pdo = null;
-    include '../cocModification/pdo.php';
+    include '../importPhp/pdo.php';
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $select = $pdo->prepare("SELECT * FROM coc");
     $select->execute();
@@ -30,7 +29,6 @@ $pdo = null;
 <head>
     <?php include '../importPhp/head.php' ?>
     <title>Clash Of Clans</title>
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../img/cocLogo.webp">
 </head>
 <body>
@@ -108,10 +106,10 @@ include '../importPhp/header.php';
         <h2>Some stats</h2>
         <p>Accounts created : <progress value="<?php echo $accountCreated ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountCreated ?> / <?php echo $totalAccount ?></p>
         <p>Accounts full max : <progress value="<?php echo $accountFullMax ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountFullMax ?> / <?php echo $totalAccount ?> </p>
-        <p>Accounts with maxed hdv : <progress value="<?php echo $accountMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxHdv ?> / <?php echo $totalAccount ?> </p>
-        <p>Accounts at max hdv : <progress value="<?php echo $accountAtMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxHdv ?> / <?php echo $totalAccount ?> </p>
-        <p>Accounts with maxed mdo : <progress value="<?php echo $accountMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxMdo ?> / <?php echo $totalAccount ?> </p>
-        <p>Accounts at max mdo : <progress value="<?php echo $accountAtMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxMdo ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts with maxed th : <progress value="<?php echo $accountMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxHdv ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts at max th : <progress value="<?php echo $accountAtMaxHdv ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxHdv ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts with maxed bh : <progress value="<?php echo $accountMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxMdo ?> / <?php echo $totalAccount ?> </p>
+        <p>Accounts at max bh : <progress value="<?php echo $accountAtMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxMdo ?> / <?php echo $totalAccount ?> </p>
     </section>
 
     <section>

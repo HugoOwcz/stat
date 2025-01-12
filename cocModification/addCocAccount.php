@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($name != '' and $hdvMax != '' and $mdoMax != '') {
         try {
             $pdo = null;
-            include 'pdo.php';
+            include '../importPhp/pdo.php';
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $add = $pdo->prepare("INSERT INTO coc (pseudoAccount, hdvMax, actualHdv, mdoMax, actualMdo, email, created, maxedHdv, maxedMdo) 
                 VALUES (:name, :hdvMax, :actualHdv, :mdoMax, :actualMdo, :email,:created,:maxedHdv,:maxedMdo)");
@@ -23,4 +23,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-header("location:../coc.php");
+header("location:../page/coc.php");
