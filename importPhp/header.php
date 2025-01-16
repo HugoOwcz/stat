@@ -46,4 +46,12 @@ session_start();
             $_SESSION['location'] = $location;
         } ?>
     </nav>
+    <form action="../modifyOption/elementViewOnPage.php" method="post">
+        <label for="">What do tou want to see : </label>
+        <select name="option">
+            <option value="all">All</option>
+            <option value="information">Only my information</option>
+            <option value="forms">Only forms</option>
+        </select>
+    </form>
 </header>
