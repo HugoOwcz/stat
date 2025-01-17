@@ -53,5 +53,6 @@ session_start();
             <option value="information">Only my information</option>
             <option value="forms">Only forms</option>
         </select>
+        <input type="submit" value="Change">
     </form>
 </header>
