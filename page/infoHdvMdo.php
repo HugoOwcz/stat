@@ -43,6 +43,7 @@ include '../importPhp/header.php';
 ?>
 <main>
     <h1><?php echo $hdvOrmdotext;?> <?php echo $level ?></h1>
+    <?php if ($_SESSION['info'] == "Show") { ?>
     <section>
         <table>
             <caption>Info for the buildings of this <?php echo $hdvOrmdotext;?></caption>
@@ -90,7 +91,7 @@ include '../importPhp/header.php';
             </tbody>
         </table>
     </section>
-
+    <?php } if ($_SESSION['forms'] == "Show") { ?>
     <section>
         <h2>Add building for <?php echo $hdvOrmdotext;?> <?php echo $level ?></h2>
         <form method="post" action="../cocModification/addInfoHdv.php">
@@ -184,7 +185,7 @@ include '../importPhp/header.php';
             <input type="submit" value="Delete info">
         </form>
     </section>
-
+    <?php } ?>
 </main>
 <footer>
     <?php include '../importPhp/toTop.php' ?>

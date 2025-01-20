@@ -1,5 +1,19 @@
 <?php
 session_start();
+if (empty($_SESSION['info'])) {
+    $_SESSION['info'] = true;
+}
+if (empty($_SESSION['forms'])) {
+    $_SESSION['forms'] = true;
+}
+function hideShowInfo () {
+    $_SESSION['info'] = !$_SESSION['info'];
+    echo $_SESSION['info'];
+}
+function hideShowForms () {
+    $_SESSION['forms'] = !$_SESSION['forms'];
+    echo $_SESSION['forms'];
+}
 ?>
 <header>
     <nav class="navBar">
@@ -46,13 +60,10 @@ session_start();
             $_SESSION['location'] = $location;
         } ?>
     </nav>
-    <form action="../modifyOption/elementViewOnPage.php" method="post">
-        <label for="">What do tou want to see : </label>
-        <select name="option">
-            <option value="all">All</option>
-            <option value="information">Only my information</option>
-            <option value="forms">Only forms</option>
-        </select>
-        <input type="submit" value="Change">
+    <form action="../modifyOption/hideShowInfo.php" method="post">
+        <input type="submit" value="<?php if ($_SESSION['info'] == "Show") {echo "Hide";} else {echo "Show";} ?> Information">
+    </form>
+    <form action="../modifyOption/hideShowForms.php" method="post">
+        <input type="submit" value="<?php if ($_SESSION['forms'] == "Show") {echo "Hide";} else {echo "Show";} ?> Forms">
     </form>
 </header>

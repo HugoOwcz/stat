@@ -40,6 +40,7 @@ include '../importPhp/header.php';
 ?>
 <main>
     <h1>Anime</h1>
+    <?php if ($_SESSION['info'] == "Show") { ?>
     <section>
         <h2>Ranking</h2>
     </section>
@@ -64,6 +65,7 @@ include '../importPhp/header.php';
             </tbody>
         </table>
     </section>
+    <?php } if ($_SESSION['forms'] == "Show") { ?>
     <section>
         <h2>Rank an anime</h2>
         <form action="../animeModification/addAnimeInRanking.php" method="post">
@@ -155,6 +157,7 @@ include '../importPhp/header.php';
             </div>
         </form>
     </section>
+    <?php } ?>
 </main>
 <footer>
     <?php include '../importPhp/toTop.php' ?>

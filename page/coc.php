@@ -37,7 +37,7 @@ include '../importPhp/header.php';
 ?>
 <main>
     <h1>Clash Of Clans Accounts</h1>
-    <?php if ($_SESSION['viewOption'] != 'forms') { ?>
+    <?php if ($_SESSION['info'] == "Show") { ?>
     <section>
         <table>
             <caption>
@@ -112,7 +112,7 @@ include '../importPhp/header.php';
         <p>Accounts with maxed bh : <progress value="<?php echo $accountMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountMaxMdo ?> / <?php echo $totalAccount ?> </p>
         <p>Accounts at max bh : <progress value="<?php echo $accountAtMaxMdo ?>" max="<?php echo $totalAccount ?>"></progress> <?php echo $accountAtMaxMdo ?> / <?php echo $totalAccount ?> </p>
     </section>
-    <?php } if ($_SESSION['viewOption'] != 'information') { ?>
+    <?php } if ($_SESSION['forms'] == "Show") { ?>
     <section>
         <h2>Add an account</h2>
         <form method="post" action="../cocModification/addCocAccount.php">
