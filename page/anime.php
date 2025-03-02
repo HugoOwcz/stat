@@ -1,4 +1,24 @@
 <?php
+function color($value)
+{
+    switch ($value) {
+        case "S":
+            return "green";
+        case "A":
+            return "forestgreen";
+        case "B":
+            return "lightgreen";
+        case "C":
+            return "yellow";
+        case "D":
+            return "orange";
+        case "E":
+            return "red";
+        default:
+            return "lightgray";
+    }
+}
+
 $animeList = array();
 try {
     $pdo = null;
@@ -42,7 +62,45 @@ include '../importPhp/header.php';
     <h1>Anime</h1>
     <?php if ($_SESSION['info'] == "Show") { ?>
     <section>
-        <h2>Ranking</h2>
+        <table>
+            <caption>Ranking</caption>
+            <thead>
+            <tr>
+                <th scope="col">S</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+                <th scope="col">D</th>
+                <th scope="col">E</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php while (count($animeList) > 0) { ?>
+                <tr>
+                    <?php
+                    $letterSearch = array( 0 => "S", 1 => "A", 2 => "B", 3 => "C", 4 => "D", 5 => "E");
+                    for ($i = 0; $i < count($letterSearch); $i++) {
+                        $result = array();
+                        for ($j = 0; $j < count($animeList); $j++) {
+                            if ($animeList[$j]['ranking'] == $letterSearch[$i]) {
+                                $result[] = $animeList[$j]['ranking'];
+                                $result[] = $animeList[$j]['name'];
+                                array_splice($animeList, $j, 1);
+                                break;
+                            }
+                        }
+                        if (count($result) == 0) {
+                            $result[] = "";
+                            $result[] = "";
+                        }
+                    ?>
+                    <td style="background-color: <?php echo color($result[0]) ?>"> <?php
+                        echo $result[1];
+                    ?> </td> <?php } ?>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </section>
     <section>
         <table>

@@ -59,11 +59,11 @@ function hideShowForms () {
         } else {
             $_SESSION['location'] = $location;
         } ?>
+        <a href="../modifyOption/hideShowInfo.php" class="navButton">
+            <p><?php if ($_SESSION['info'] == "Show") {echo "Hide";} else {echo "Show";} ?> Information </p>
+        </a>
+        <a href="../modifyOption/hideShowForms.php" class="navButton">
+            <p> <?php if ($_SESSION['forms'] == "Show") {echo "Hide";} else {echo "Show";} ?> Forms </p>
+        </a>
     </nav>
-    <form action="../modifyOption/hideShowInfo.php" method="post">
-        <input type="submit" value="<?php if ($_SESSION['info'] == "Show") {echo "Hide";} else {echo "Show";} ?> Information">
-    </form>
-    <form action="../modifyOption/hideShowForms.php" method="post">
-        <input type="submit" value="<?php if ($_SESSION['forms'] == "Show") {echo "Hide";} else {echo "Show";} ?> Forms">
-    </form>
 </header>
