@@ -24,7 +24,7 @@ include '../importPhp/header.php';
                 <img src="" alt="image of video game to be defined">
             </section>
         </a>
-        <a href="anime.php" class="choice">
+        <a href="animeHome.php" class="choice">
             <section class="category">
                 <h2>Anime</h2>
                 <img src="" alt="image of anime to be defined">

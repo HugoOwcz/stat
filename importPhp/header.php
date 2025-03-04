@@ -40,9 +40,9 @@ function hideShowForms () {
             </a>
             <?php
         }
-        if ( $location != 'anime.php'){
+        if ( $location != 'animeHome.php'){
         ?>
-        <a href="anime.php" class="navButton">
+        <a href="animeHome.php" class="navButton">
             <p>Anime</p>
         </a>
         <?php
