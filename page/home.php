@@ -27,7 +27,7 @@ include '../importPhp/header.php';
         <a href="animeHome.php" class="choice">
             <section class="category">
                 <h2>Anime</h2>
-                <img src="" alt="image of anime to be defined">
+                <img src="../img/Ahjin.webp" alt="image of Ahjin gild logo">
             </section>
         </a>
         <a href="film.php" class="choice">

@@ -17,4 +17,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-header("location:../page/animeHome.php");
+header("location:../page/animeWatchlist.php");

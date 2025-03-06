@@ -26,4 +26,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pdo = null;
     }
 }
-header("location:../page/animeHome.php");
+header("location:../page/animeWatchlist.php");
