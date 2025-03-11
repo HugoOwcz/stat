@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $add = $pdo->prepare("INSERT INTO animeRanking (name, ranking) 
                 VALUES (:name, :rank)");
             $add->execute(['name' => $name, 'rank' => $rank]);
+            $delete = $pdo->prepare("DELETE FROM watchlistAnime WHERE name = :name");
+            $delete->execute(['name' => $name]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

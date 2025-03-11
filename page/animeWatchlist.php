@@ -35,6 +35,7 @@ $pdo = null;
 <body>
 <?php
 include '../importPhp/header.php';
+include '../importPhp/navbarAnime.php';
 ?>
 <main>
     <h1>Anime Watchlist</h1>
@@ -50,9 +51,12 @@ include '../importPhp/header.php';
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($watchlist as $anime) { ?>
+                <?php foreach ($watchlist as $anime) {
+                    $link = strtolower($anime['name']);
+                    $link = str_replace(" ", "-", $link);
+                ?>
                     <tr>
-                        <td><?php echo $anime['name']?> </td>
+                        <td><a href=" https://anime-sama.fr/catalogue/<?php echo $link ?>" target="_blank"><?php echo $anime['name']?> </a></td>
                         <td style="background-color: <?php echo color($anime['vo']) ?>"> <?php echo $anime['vo']?> </td>
                         <td style="background-color: <?php echo color($anime['vf']) ?>"> <?php echo $anime['vf']?> </td>
                     </tr>
@@ -67,13 +71,6 @@ include '../importPhp/header.php';
                 <div>
                     <label for="">Name : </label>
                     <input type="text" name="name" required>
-                </div><div>
-                    <label for="">Vo : </label>
-                    <select name="vo">
-                        <option value="null">I don't no</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
                 </div><div>
                     <label for="">Vf : </label>
                     <select name="vf">

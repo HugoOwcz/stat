@@ -44,6 +44,7 @@ try {
 <body>
 <?php
 include '../importPhp/header.php';
+include '../importPhp/navbarAnime.php';
 ?>
 <main>
     <h1>Anime Ranking</h1>
@@ -80,10 +81,15 @@ include '../importPhp/header.php';
                             $result[] = "";
                             $result[] = "";
                         }
+                        $link = "";
+                        if (count($result) > 0) {
+                            $link = strtolower($result[1]);
+                            $link = str_replace(" ", "-", $link);
+                        }
                         ?>
-                        <td style="background-color: <?php echo color($result[0]) ?>"> <?php
+                        <td style="background-color: <?php echo color($result[0]) ?>"><a href=" https://anime-sama.fr/catalogue/<?php echo $link ?>" target="_blank"> <?php
                             echo $result[1];
-                            ?> </td> <?php } ?>
+                            ?></a></td> <?php } ?>
                 </tr>
             <?php } ?>
             </tbody>

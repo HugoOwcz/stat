@@ -21,7 +21,7 @@ include '../importPhp/header.php';
         <a href="animeWatchlist.php" class="choice">
             <section class="category">
                 <h2>Anime Watchlist</h2>
-                <img src="" alt="image of anime watchlist to be defined">
+                <img src="../img/watchlist.webp" alt="image of anime watchlist with binocular">
             </section>
         </a>
     </section>

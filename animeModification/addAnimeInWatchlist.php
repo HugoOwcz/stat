@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $add = $pdo->prepare("INSERT INTO watchlistAnime (name, vo, vf) 
                 VALUES (:name, :vo, :vf)");
-            $add->execute(['name' => $name, 'vo' => $vo, 'vf' => $vf]);
+            $add->execute(['name' => $name, 'vo' => 'yes', 'vf' => $vf]);
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
